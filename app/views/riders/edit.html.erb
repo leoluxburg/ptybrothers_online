@@ -1,0 +1,19 @@
+<div class="padded">
+  <%# if current_user.owns_rider?(@profile) %>
+  <h1 class="text-center">Rider</h1>
+   <div class="container">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <%= simple_form_for @rider do |f| %>
+              <%= f.input :user_name %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :country %>
+              <%= f.input :age %>
+              <%= f.input :description %>
+              <%= f.submit %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

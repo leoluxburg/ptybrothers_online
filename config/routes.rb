@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,  :controllers => { registrations: "registrations"}
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :riders
+
+  resources :riders do
+    resources :albums, only: [:new, :create, :edit, :update, :destroy]
+  end
+
+  resources :albums, only: [:index, :show]
 end
