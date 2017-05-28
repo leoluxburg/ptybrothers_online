@@ -1,0 +1,17 @@
+<h1 class="text-center">Riders</h1>
+<div class="container">
+  <div class="row">
+    <% @riders.each do |rider|%>
+    <% if rider.team_rider %>
+    <%= link_to rider_path(rider) do %>
+    <div class="col-xs-12 col-sm-6 text-center">
+      <h3><%=rider.first_name + " " +rider.last_name%></h3>
+        <%=image_tag rider.photo, class: "avatar-large"%>
+    </div>
+    <%end%>
+    <%end%>
+    <%end%>
+  </div>
+</div>
+<br>
+<br>

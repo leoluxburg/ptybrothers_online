@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h1><%= @album.title%></h1>
+  <p><%=@album.rider.user_name%></p>
+  <p><%=@album.photographer%></p>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row text-center">
+    <%@album.photos.each do |photo|%>
+    <div class="col-xs-12 col-sm-4 art">
+      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill%>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class = "text-center padded">
+  <%if current_user.rider.id == @album.rider_id%>
+  <%= link_to "Edit", edit_album_path(@album), class: 'btn btn-bro'%>
+  <%end%>
+</div>

@@ -1,0 +1,20 @@
+  <h1 class="text-center"><%= @album.title%></h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <%= simple_form_for @album do |f| %>
+        <%= f.input :title %>
+        <%= f.input :photographer %>
+        <%= f.input :location %>
+        <%= f.input :photos, as: :attachinary %>
+        <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center padded">
+  <%if current_user.rider.id == @album.rider_id%>
+  <%= link_to "Delete",album_path(@album), method: :delete, class: 'btn btn-danger'%>
+  <%end%>
+</div>

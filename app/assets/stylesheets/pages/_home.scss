@@ -1,4 +1,25 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+// body{
+//   font-family: 'Indie Flower', cursive;
+// }
+body h1, h2, h3, h4, h5, h6{
+  font-family: 'Audiowide', cursive;
+}
+body h1{
+  font-family: 'Audiowide', cursive;
+  font-size: 80px;
+}
+body a {
+  color:#000000;
+  text-decoration: none;
+
+}
+
+body a:hover{
+  color:#E20909;
+  text-decoration: none;
+
+}
+
+body strong{
+  color:#E20909;
+}
