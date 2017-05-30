@@ -9,6 +9,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <link href="https://fonts.googleapis.com/css?family=Audiowide|Indie+Flower" rel="stylesheet">
   <link rel="stylesheet" href="src/css/swipebox.css">
+  <%= render 'application/favicon' %>
 </head>
 <body class="Site">
   <%= render 'shared/navbar' %>
@@ -19,5 +20,14 @@
   <%= render 'shared/footer' %>
   <%= javascript_include_tag 'application' %>
   <%= cloudinary_js_config %>
+  <script src="lib/jquery-2.0.3.js"></script>
+  <script src="src/js/jquery.swipebox.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+  ;( function( $ ) {
+
+    $( '.swipebox' ).swipebox();
+
+  } )( jQuery );
+</script>

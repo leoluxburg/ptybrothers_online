@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1><%= @album.title%></h1>
-  <p><%=@album.rider.user_name%></p>
-  <p><%=@album.photographer%></p>
+  <h2><%=@album.rider.user_name%></h2>
+  <h3><%=@album.photographer%></h3>
 </div>
 <br>
 <br>
@@ -9,8 +9,9 @@
 <div class="container">
   <div class="row text-center">
     <%@album.photos.each do |photo|%>
-    <div class="col-xs-12 col-sm-4 art">
-      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill%>
+    <div class="col-xs-12 art">
+      <%= cl_image_tag photo.path, height: 500, crop: :fill, class: "img-responsive" %>
+      <br>
     </div>
     <% end %>
   </div>
@@ -20,3 +21,4 @@
   <%= link_to "Edit", edit_album_path(@album), class: 'btn btn-bro'%>
   <%end%>
 </div>
+
