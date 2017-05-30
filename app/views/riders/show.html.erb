@@ -11,8 +11,15 @@
       <h3><%=@rider.description%></h3>
     </div>
   </div>
+  <div class="text-center">
+   <%if current_user.rider.id == @rider.id%>
+   <%= link_to "Edit", edit_rider_path(@rider), class: 'btn btn-bro'%>
+   <%end%>
+ </div>
 </div>
 </div>
+<br>
+<br>
 <% if @rider.team_rider %>
 <div class="container">
   <div class="row text-center">
