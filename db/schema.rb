@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525063230) do
+ActiveRecord::Schema.define(version: 20170606041035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,28 @@ ActiveRecord::Schema.define(version: 20170525063230) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date"
+    t.time     "time"
+    t.float    "inscription"
+    t.string   "location"
+    t.text     "description"
+    t.integer  "rider_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["rider_id"], name: "index_events_on_rider_id", using: :btree
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "rider_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_invitations_on_event_id", using: :btree
+    t.index ["rider_id"], name: "index_invitations_on_rider_id", using: :btree
+  end
+
   create_table "riders", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -88,5 +110,8 @@ ActiveRecord::Schema.define(version: 20170525063230) do
   end
 
   add_foreign_key "albums", "riders"
+  add_foreign_key "events", "riders"
+  add_foreign_key "invitations", "events"
+  add_foreign_key "invitations", "riders"
   add_foreign_key "riders", "users"
 end
