@@ -4,6 +4,7 @@ class RidersController < ApplicationController
   end
 
   def show
+    @user = current_user
     @rider = Rider.find(params[:id])
     authorize @rider
   end

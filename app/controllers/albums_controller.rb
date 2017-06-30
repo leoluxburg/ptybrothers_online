@@ -13,7 +13,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    if @rider.team_rider
+    if @rider.user.admin
       @album = Album.new
       authorize @album
     else
@@ -22,7 +22,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    if @rider.team_rider
+    if @rider.user.admin
       @album = Album.create(album_params)
       @album.rider = current_user.rider
       authorize @album
