@@ -41,18 +41,14 @@
 
 <div class="container">
   <div class="row">
-    <h1 class="text-center">Lo más reciente</h1>
+    <h2 class="text-center">Lo más reciente</h2>
     <div class="col-xs-12  col-sm-8 col-sm-offset-2">
 
       <% if @album.present? %>
       <%= link_to album_path(@album) do %>
       <div class="card" style="background-image: /*linear-gradient(-225deg, rgba(150,20,0,0.6) 0%, rgba(150,0,0,0.3) 50%),*/ url('<%= cl_image_path @album.photos.first.path %>');  background-position: center;">
         <div class="card-category text-center">
-          <h2><%=@album.title%></h2>
-        </div>
-        <div class="card-description">
-          <h3>Rider: <%=@album.rider.user_name%></h3>
-          <h4>By: <%=@album.photographer%></h4>
+          <h3><%=@album.title%></h3>
         </div>
       </div>
       <%end%>
@@ -72,7 +68,7 @@
 </div>
 
 
-<br>
+<!-- <br>
 <br>
 <br>
 <br>
@@ -128,7 +124,7 @@
 </div>
 <br>
 <br>
-</div>
+</div> -->
 
 <br>
 <br>
@@ -166,7 +162,7 @@
   <div class="row">
     <div class ="text-center">
       <div class="col-xs-12">
-        <h1>Jobo House Downhill Fest 2017</h1>
+        <h3>Jobo House Downhill Fest 2017</h3>
         <h4>Location: El jobo, La Chorrera</h4>
         <blockquote class="embedly-card"><h4><a href="https://www.youtube.com/watch?v=49g-Za0dydE">Jobo House Downhill Fest 2017</a></h4><p>Uploaded by PTY Brothers on 2017-06-28.</p></blockquote>
         <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>

@@ -1,4 +1,4 @@
-<h1 class="text-center" style="padding-bottom: 80px;">Sessions</h1>
+<h2 class="text-center" style="padding-bottom: 80px;">Sessions</h2>
 <div class="container">
   <div class="row">
     <% @albums.each do |album| %>
@@ -7,11 +7,7 @@
       <% if album.photos.present? %>
       <div class="card" style="background-image: /*linear-gradient(-225deg, rgba(150,20,0,0.6) 0%, rgba(150,0,0,0.3) 50%),*/ url('<%= cl_image_path album.photos.first.path %>');  background-position: center;">
         <div class="card-category text-center">
-          <h2><%=album.title%></h2>
-        </div>
-        <div class="card-description">
-          <h3>Rider: <%=album.rider.user_name%></h3>
-          <h4>By: <%=album.photographer%></h4>
+          <h3><%=album.title%></h3>
         </div>
       </div>
       <% else %>

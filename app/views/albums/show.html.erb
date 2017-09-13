@@ -1,17 +1,17 @@
-<div class="text-center">
-  <h2><%= @album.title%></h2>
-  <h3><%=@album.rider.user_name%></h3>
-  <h4><%=@album.photographer%></h4>
-  <h5><%= @album.location%></h5>
+<div class="navbar-wagon navbar-wagon-fixed text-center">
+   <%= link_to albums_path, class: "navbar-wagon-brand" do %>
+  <%= image_tag "logo.png" %>
+  <% end %>
+  <h2 style="text-align: center;"><%= @album.title%></h2>
 </div>
-<br>
-<br>
 <br>
 <div class="container">
   <div class="row text-center">
     <%@album.photos.each do |photo|%>
     <div class="col-xs-12 art">
+    <hr>
       <%= cl_image_tag photo.path, height: 500, crop: :fill, class: "img-responsive" %>
+      <hr>
       <br>
     </div>
     <% end %>
