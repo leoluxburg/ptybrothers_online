@@ -25,7 +25,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-
+gem 'acts_as_votable', '~> 0.11.1'
+gem 'activerecord-reputation-system', require: 'reputation_system'
 group :development do
   gem 'rails_real_favicon'
 end

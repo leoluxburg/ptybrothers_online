@@ -1,18 +1,32 @@
 <div class="navbar-wagon navbar-wagon-fixed text-center">
-   <%= link_to albums_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo.png" %>
-  <% end %>
-  <h2 style="text-align: center;"><%= @album.title%></h2>
+ <%= link_to albums_path, class: "navbar-wagon-brand" do %>
+ <%= image_tag "logo.png" %>
+ <% end %>
+ <h2 style="text-align: center;"><%= @album.title%></h2>
 </div>
 <br>
 <div class="container">
   <div class="row text-center">
-    <%@album.photos.each do |photo|%>
-    <div class="col-xs-12 art">
-    <hr>
-      <%= cl_image_tag photo.path, height: 500, crop: :fill, class: "img-responsive" %>
-      <hr>
-      <br>
+    <%@album.photos.each_with_index  do |photo,index|%>
+    <% modal = "#myModal" + index.to_s %>
+    <% modalid = "myModal" + index.to_s %>
+    <div class="col-xs-4">
+      <a  class="btn btn-foto" data-toggle="modal" data-target=<%= modal %>>
+        <%= cl_image_tag photo.path, height: 150, crop: :fill, class: "img-responsive pic-border" %>
+      </a>
+      <div id=<%= modalid %> class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= @album.title%></h4>
+            </div>
+            <div class="modal-body">
+              <%= cl_image_tag photo.path, height: 500, crop: :fill, class: "img-responsive" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <% end %>
   </div>

@@ -1,6 +1,8 @@
 class RidersController < ApplicationController
+
   def index
     @riders = policy_scope(Rider)
+    @riders
   end
 
   def show

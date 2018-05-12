@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @album = Album.last
+    @post = Post.last
   end
 
   def videos

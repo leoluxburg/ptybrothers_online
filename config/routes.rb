@@ -11,13 +11,28 @@ Rails.application.routes.draw do
     resources :albums, only: [:new, :create]
   end
 
+   resources :riders do
+    resources :events, only: [:new, :create]
+  end
+
+  resources :riders do
+    resources :posts, only: [:new, :create]
+  end
+
+  resources :posts do
+    member {post :like}
+  end
+
+
+  resources :posts, only: [:index, :show, :edit, :update, :destroy]
+
+
   resources :albums, only: [:index, :show, :edit, :update, :destroy]
+
+  resources :events, only: [:index, :show, :edit, :update, :destroy]
 
   get '/pages/videos', to: 'pages#videos'
   get '/pages/events', to: 'pages#events'
   get '/pages/about', to: 'pages#about'
-
-
-
 end
 

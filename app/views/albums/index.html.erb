@@ -1,28 +1,13 @@
-<h2 class="text-center" style="padding-bottom: 80px;">Sessions</h2>
-<div class="container">
-  <div class="row">
-    <% @albums.each do |album| %>
-    <%= link_to album_path(album) do %>
-    <div class="col-xs-12 col-sm-6">
-      <% if album.photos.present? %>
-      <div class="card" style="background-image: /*linear-gradient(-225deg, rgba(150,20,0,0.6) 0%, rgba(150,0,0,0.3) 50%),*/ url('<%= cl_image_path album.photos.first.path %>');  background-position: center;">
-        <div class="card-category text-center">
-          <h3><%=album.title%></h3>
-        </div>
-      </div>
-      <% else %>
-      <div class="card" style="background-image: linear-gradient(-225deg, rgba(200,20,0,0.6) 0%, rgba(200,0,0,0.3) 50%), url('<%= image_path('banner.jpeg') %>')">
-        <div class="card-category text-center">
-          <h1><%=album.title%></h1>
-        </div>
-        <div class="card-description">
-          <h3>Rider: <%=album.rider.user_name%></h3>
-          <h4>By: <%=album.photographer%></h4>
-        </div>
-      </div>
-      <%end%>
-    </div>
-    <%end%>
-    <%end%>
+<% @albums.each do |album| %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(150,20,0,0.6) 0%, rgba(150,0,0,0.3) 50%), url('<%= cl_image_path album.photos.first.path %>');  background-position: center; -webkit-filter: grayscale(100%); filter: grayscale(100%);">
+  <%= link_to album_path(album) do %>
+  <div class="banner-content">
+    <h1><%=album.title%></h1>
+    <h4><i class="fa fa-camera"></i> <%=album.photographer%></h4>
+    <h4><i class="fa fa-location"></i> <%=album.location%></h4>
   </div>
+  <% end %>
 </div>
+<% end %>
+
+

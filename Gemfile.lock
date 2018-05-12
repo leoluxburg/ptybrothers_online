@@ -70,11 +70,13 @@ GEM
       activemodel (= 5.0.2)
       activesupport (= 5.0.2)
       arel (~> 7.0)
+    activerecord-reputation-system (3.0.1)
     activesupport (5.0.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts_as_votable (0.11.1)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
@@ -310,6 +312,8 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activerecord-reputation-system
+  acts_as_votable (~> 0.11.1)
   attachinary!
   autoprefixer-rails
   better_errors
@@ -345,4 +349,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.14.6
+   1.16.1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606041035) do
+ActiveRecord::Schema.define(version: 20180418052432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,23 @@ ActiveRecord::Schema.define(version: 20170606041035) do
     t.index ["rider_id"], name: "index_invitations_on_rider_id", using: :btree
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "fotografo"
+    t.integer  "rider_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "foto"
+    t.integer  "like"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.index ["rider_id"], name: "index_posts_on_rider_id", using: :btree
+  end
+
   create_table "riders", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -89,6 +106,49 @@ ActiveRecord::Schema.define(version: 20170606041035) do
     t.string   "photo"
     t.boolean  "team_rider",  default: false, null: false
     t.index ["user_id"], name: "index_riders_on_user_id", using: :btree
+  end
+
+  create_table "rs_evaluations", force: :cascade do |t|
+    t.string   "reputation_name"
+    t.string   "source_type"
+    t.integer  "source_id"
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.float    "value",           default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "data"
+    t.index ["reputation_name", "source_id", "source_type", "target_id", "target_type"], name: "index_rs_evaluations_on_reputation_name_and_source_and_target", unique: true, using: :btree
+    t.index ["reputation_name"], name: "index_rs_evaluations_on_reputation_name", using: :btree
+    t.index ["source_id", "source_type"], name: "index_rs_evaluations_on_source_id_and_source_type", using: :btree
+    t.index ["target_id", "target_type"], name: "index_rs_evaluations_on_target_id_and_target_type", using: :btree
+  end
+
+  create_table "rs_reputation_messages", force: :cascade do |t|
+    t.string   "sender_type"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.float    "weight",      default: 1.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["receiver_id", "sender_id", "sender_type"], name: "index_rs_reputation_messages_on_receiver_id_and_sender", unique: true, using: :btree
+    t.index ["receiver_id"], name: "index_rs_reputation_messages_on_receiver_id", using: :btree
+    t.index ["sender_id", "sender_type"], name: "index_rs_reputation_messages_on_sender_id_and_sender_type", using: :btree
+  end
+
+  create_table "rs_reputations", force: :cascade do |t|
+    t.string   "reputation_name"
+    t.float    "value",           default: 0.0
+    t.string   "aggregated_by"
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.boolean  "active",          default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "data"
+    t.index ["reputation_name", "target_id", "target_type"], name: "index_rs_reputations_on_reputation_name_and_target", unique: true, using: :btree
+    t.index ["reputation_name"], name: "index_rs_reputations_on_reputation_name", using: :btree
+    t.index ["target_id", "target_type"], name: "index_rs_reputations_on_target_id_and_target_type", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,9 +169,24 @@ ActiveRecord::Schema.define(version: 20170606041035) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+  end
+
   add_foreign_key "albums", "riders"
   add_foreign_key "events", "riders"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "riders"
+  add_foreign_key "posts", "riders"
   add_foreign_key "riders", "users"
 end

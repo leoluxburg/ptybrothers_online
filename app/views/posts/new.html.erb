@@ -1,0 +1,13 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <%= simple_form_for [@rider, @post] do |f| %>
+        <%= f.input :fotografo %>
+        <%= f.input :foto %>
+        <%= f.input :foto_cache, as: :hidden %>
+        <%= f.submit "add a review", class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
