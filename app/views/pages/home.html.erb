@@ -7,7 +7,7 @@
     <h1>PTY Brothers</h1>
     <p>Se parte del movimiento!</p>
     <%= link_to "Unete", new_user_registration_path, class: "btn btn-bro"%>
-    <%end%>
+    <% end %>
   </div>
 </div>
 <br>
@@ -36,7 +36,7 @@
   </div>
 </div>
 </div>
-<%end%>
+<% end %>
 <% if @album.present? %>
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(150,20,0,0.6) 0%, rgba(150,0,0,0.3) 50%), url('<%= cl_image_path @album.photos.first.path %>');  background-position: center; -webkit-filter: grayscale(100%); filter: grayscale(100%);">
 
@@ -46,6 +46,6 @@
   <h4><i class="fa fa-map-marker"></i> <%=@album.location%></h4>
   <% end %>
 </div>
-<%end%>
+<% end %>
 <br>
 
