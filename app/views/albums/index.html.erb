@@ -1,5 +1,5 @@
 <% @albums.each do |album| %>
-<div class="banner" style="background-image:url('<%= cl_image_path album.photos.first.path %>'); ">
+<div class="banner" style="background-image:url('<%= cl_image_path album.photos.first.path %>'); background-position: center; ">
   <%= link_to album_path(album) do %>
   <div class="banner-content">
     <h1><%=album.title%></h1>

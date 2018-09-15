@@ -4,9 +4,14 @@
 <br>
 <br>
 <br>
-
 <div class="container">
   <div class="row text-center">
+  <h2><%= @album.title %></h2>
+    <h3><%= @album.location %></h3>
+      <h4><%= @album.photographer %></h4>
+
+
+  <hr>
      <%@album.photos.each_with_index  do |photo,index|%>
               <div class="text-center">
                 <br>
@@ -14,6 +19,8 @@
               <br>
               </div>
     <% end %>
+    <hr>
+    <hr>
     <%@album.photos.each_with_index  do |photo,index|%>
     <% modal = "#myModal" + index.to_s %>
     <% modalid = "myModal" + index.to_s %>
@@ -36,6 +43,7 @@
       </div>
     </div>
     <% end %>
+    <hr>
   </div>
 </div>
 <div class = "text-center padded">

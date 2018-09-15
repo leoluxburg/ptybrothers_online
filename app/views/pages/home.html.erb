@@ -32,8 +32,9 @@
       </h3>
       <h3><i class="fa fa-camera"></i> <%= post.fotografo %></h3>
       <h3><i class="fa fa-star"></i> <%= post.reputation_for(:likes).to_i%></h3>
-      <%= link_to "up", like_post_path(post,type:"up"), method: "post"%>
-      <%= link_to "down", like_post_path(post,type:"down"), method: "post"%>
+
+      <p> <i class="fa fa-arrow-up"></i> <%= link_to "up", like_post_path(post,type:"up"), method: "post"%> </p>
+       <p> <i class="fa fa-arrow-down"></i>  <%= link_to "down", like_post_path(post,type:"down"), method: "post"%> </p>
     </div>
   </div>
 </div>
