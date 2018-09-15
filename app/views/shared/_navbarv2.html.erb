@@ -10,26 +10,20 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-       <button type="button" class="btn btn-bro" data-toggle="collapse" data-target="#demo2"> <i class="fa fa-bars" data-toggle="collapse" data-target="#demo"></i></button>
        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <%= link_to root_path do %>
-          <p>Cuecada</p>
-          <% end %>
-          <%= link_to destroy_user_session_path, method: :delete do %> <h5><strong>Logout</strong></h5><% end %>
            <li>
             <%= link_to root_path do %>
-            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-            <% end %>
-          </li>
-           <li>
-            <%= link_to posts_path do %>
             <i class="fa fa-globe"></i>  <%= t(".profile", default: "Mundo") %>
             <% end %>
+          </li>
+            <li>
+            <%= link_to rider_path(current_user.rider) do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <%end%>
           </li>
            <li>
             <%= link_to albums_path do %>
@@ -37,9 +31,19 @@
             <% end %>
           </li>
           <li>
-            <%= link_to rider_path(current_user.rider) do %>
-            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-            <%end%>
+            <a href="https://www.youtube.com/user/1331panchito">
+              <i class="fa fa-youtube"></i> Videos
+            </a>
+          </li>
+            <li>
+            <a href="https://www.instagram.com/ptybrothers/">
+              <i class="fa fa-instagram"></i> Instragram
+            </a>
+          </li>
+            <li>
+            <%= link_to pages_about_path do %>
+            <i class="fa fa-image"></i>  Contact us
+            <% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
@@ -55,22 +59,4 @@
    <% end %>
 
  </div>
-</div>
-<div>
-<div id="demo" class="collapse text-center route" >
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <%= link_to "#" do %> <h5><strong>World</strong></h5><% end %>
-  <%= link_to "#" do %> <h5><strong>Media</strong></h5> <% end %>
-  <%= link_to "#" do %> <h5><strong>Profile</strong></h5><% end %>
-  <%= link_to "#" do %> <h5><strong>Videos</strong></h5><% end %>
-  <%= link_to "#" do %> <h5><strong>Instagram</strong></h5><% end %>
-  <%= link_to destroy_user_session_path, method: :delete do %> <h5><strong>Logout</strong></h5><% end %>
-
-</div>
 </div>
