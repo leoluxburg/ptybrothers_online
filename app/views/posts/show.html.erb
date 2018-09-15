@@ -1,5 +1,11 @@
+<br>
+<br>
+<br>
+<h1 style="padding-top: 50px"></h1>
 <div class="text-center">
+  <div class="container">
   <%= cl_image_tag @post.foto,  height: 500, class: "img-responsive center-block", style: "border: 3px solid #000000;"%>
+  </div>
 </div>
 <div class="container" style="padding-bottom: 50px">
   <div class="row">
@@ -23,10 +29,15 @@
     <div class="row">
       <div class="text-left">
         <h3>Comments</h3>
+        <%= render 'comments/comment' %>
       </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

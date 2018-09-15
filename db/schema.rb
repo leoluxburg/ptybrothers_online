@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418052432) do
+ActiveRecord::Schema.define(version: 20180808045057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20180418052432) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "rider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["rider_id"], name: "index_comments_on_rider_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -184,6 +194,8 @@ ActiveRecord::Schema.define(version: 20180418052432) do
   end
 
   add_foreign_key "albums", "riders"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "riders"
   add_foreign_key "events", "riders"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "riders"

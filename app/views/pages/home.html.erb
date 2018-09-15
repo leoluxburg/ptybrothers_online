@@ -1,64 +1,55 @@
-<div class="container">
+<!-- <div class="container">
 <div class="row">
   <div class="col-xs-12 text-center meanwhile">
   <%= image_tag "logo1.png",  height: 300%>
   <h5>PTY Brothers v2.0.0 Soon</h5>
   </div>
 </div>
-</div>
-<!-- <div class="banner" style="background-image: url('<%= image_path('banner3.png')%> ');  background-position: center;">
-  <div class="banner-content">
-    <% if current_user %>
-    <h1>PTY Brothers</h1>
-    <p>Comunidad Unida por la Adrenalina!</p>
-    <%else%>
-    <h1>PTY Brothers</h1>
-    <p>Se parte del movimiento!</p>
-    <%= link_to "Unete", new_user_registration_path, class: "btn btn-bro"%>
-    <% end %>
-  </div>
-</div>
+</div> -->
 <br>
-<% if @post.present? %>
-<div class="container" style="padding-bottom: 100px; padding-top: 100px;">
+<br>
+<% if current_user %>
+<br>
+<br>
+<br>
+<br>
+<% if @posts %>
+<% @posts.reverse.each do |post|%>
+<div class="container" style="padding-bottom: 150px">
   <div class="row">
-    <div class="col-md-6">
-      <%= link_to post_path(@post) do %>
+    <div class="col-md-12 text-center">
+      <%= link_to post_path(post) do %>
       <div class="text-center">
-       <%= cl_image_tag @post.foto,  height: 300, class: "img-responsive", style: "border: 3px solid #000000;"%>
-     </div>
-     <% end %>
-   </div>
-   <div class="col-md-6">
-    <h1>Rider</h1>
-    <h3>
-      <%= link_to rider_path(@post.rider) do %>
-      <%= cl_image_tag @post.rider.photo, height: 80, class: "avatar-small", style: "border-radius: 50%; border: 3px solid #000000;"%>
-      <%= @post.rider.first_name %> <%= @post.rider.last_name %>
-    </h3>
-    <% end %>
-    <h3><i class="fa fa-camera"></i> <%= @post.fotografo %></h3>
-    <h3><i class="fa fa-star"></i> <%= @post.reputation_for(:likes).to_i%></h3>
-    <%= link_to "up", like_post_path(@post,type:"up"), method: "post"%>
-    <%= link_to "down", like_post_path(@post,type:"down"), method: "post"%>
+        <%= cl_image_tag post.foto, height: 500, crop: :fill, class: "img-responsive center", style: "border: 3px solid #000000;"%>
+      </div>
+      <%end%>
+      <h2>Rider</h2>
+      <h3>
+        <%= link_to rider_path(post.rider) do %>
+        <%= cl_image_tag post.rider.photo, height: 80, class: "avatar-small", style: "border-radius: 50%; border: 3px solid #000000;"%>
+        <%= post.rider.first_name %> <%= post.rider.last_name %>
+        <%end%>
+      </h3>
+      <h3><i class="fa fa-camera"></i> <%= post.fotografo %></h3>
+      <h3><i class="fa fa-star"></i> <%= post.reputation_for(:likes).to_i%></h3>
+      <%= link_to "up", like_post_path(post,type:"up"), method: "post"%>
+      <%= link_to "down", like_post_path(post,type:"down"), method: "post"%>
+    </div>
   </div>
 </div>
-</div>
-<% else %>
-<h1>Fuck it</h1>
+<% end %>
+<%else%>
+<h1>Fuck wait</h1>
 <% end %>
 
-<% if @album.present? %>
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(150,20,0,0.6) 0%, rgba(150,0,0,0.3) 50%), url('<%= cl_image_path @album.photos.first.path %>');  background-position: center; -webkit-filter: grayscale(100%); filter: grayscale(100%);">
-
-  <%= link_to album_path(@album) do %>
-  <h1><%=@album.title%></h1>
-  <h4><i class="fa fa-camera"></i> <%=@album.photographer%></h4>
-  <h4><i class="fa fa-map-marker"></i> <%=@album.location%></h4>
-  <% end %>
-</div>
-<% else %>
-<h1>Fuck it</h1>
+<%else%>
+<br>
+   <div class="banner" style="background-image: url('<%= image_path('banner3.png')%> ');  background-position: center;">
+    <div class="banner-content">
+      <h1>PTY Brothers</h1>
+      <h3>Comunidad Unida por la Adrenalina</h3>
+      <p>Se parte del movimiento!</p>
+      <%= link_to "Sing up", new_user_registration_path, class: "btn btn-bro"%>
+    </div>
+  </div>
 <% end %>
-<br> -->
-

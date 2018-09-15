@@ -1,16 +1,20 @@
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 text-center">
      <h3><%=@rider.first_name %> <%=@rider.last_name %></h3>
      <%= cl_image_tag @rider.photo, height: 300, width: 400, crop: :fill, class: "avatar-large" %>
-     <h2><strong>AKA: </strong><%=@rider.user_name%></h2>
-     <h3><strong>Age: </strong><%=@rider.age%></h3>
-     <h3><strong>Origin: </strong><%=@rider.country%></h3>
-     <h3><%=@rider.description%></h3>
+     <h4><strong>AKA: </strong><%=@rider.user_name%></h4>
+     <h4><strong>Age: </strong><%=@rider.age%></h4>
+     <h4><strong>Origin: </strong><%=@rider.country%></h4>
+     <h4><%=@rider.description%></h4>
    </div>
  </div>
 </div>
-<br>
 <br>
 <div class="text-center">
  <%if current_user.rider.id == @rider.id%>
@@ -25,16 +29,16 @@
   <%end%>
   <%end%>
 </div>
-
-
+<div class="container">
 <div class="text-center" style="padding-bottom: 20px; padding-top: 20px;">
  <%if current_user.rider.id == @rider.id%>
+ <p>Add post</p>
  <%= link_to new_rider_post_path(@rider) do %>
  <h1><i class="fa fa-plus"></i></h1>
  <%end%>
  <%end%>
 </div>
-
+</div>
 <div class="container">
 <div class="row">
   <% @rider.posts.reverse.each do |post|%>
@@ -48,4 +52,7 @@
   <% end %>
 </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>

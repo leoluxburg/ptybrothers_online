@@ -1,12 +1,19 @@
-<div class="navbar-wagon navbar-wagon-fixed text-center">
- <%= link_to albums_path, class: "navbar-wagon-brand" do %>
- <%= image_tag "logo.png" %>
- <% end %>
- <h2 style="text-align: center;"><%= @album.title%></h2>
-</div>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="container">
   <div class="row text-center">
+     <%@album.photos.each_with_index  do |photo,index|%>
+              <div class="text-center">
+                <br>
+              <%= cl_image_tag photo.path, height: 500, crop: :fill, class: "img-responsive center" %>
+              <br>
+              </div>
+    <% end %>
     <%@album.photos.each_with_index  do |photo,index|%>
     <% modal = "#myModal" + index.to_s %>
     <% modalid = "myModal" + index.to_s %>

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
+    resources :comments, only:[:new, :create, :destroy]
+  end
+  resources :posts do
     member {post :like}
   end
 
@@ -27,7 +30,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show, :edit, :update, :destroy]
 
 
-  resources :albums, only: [:index, :show, :edit, :update, :destroy]
+  resources :albums, only: [:index, :show,:new, :edit, :update, :destroy]
 
   resources :events, only: [:index, :show, :edit, :update, :destroy]
 

@@ -1,13 +1,24 @@
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
+       <h2>Nuevo post</h2>
       <%= simple_form_for [@rider, @post] do |f| %>
         <%= f.input :fotografo %>
         <%= f.input :foto %>
         <%= f.input :foto_cache, as: :hidden %>
-        <%= f.submit "add a review", class: "btn btn-danger" %>
+        <%= f.submit "Add Post", class: "btn btn-danger" %>
       <% end %>
     </div>
   </div>
+</div>
+<br>
+<div class="container text-center">
+   <p>*Contenido Indevido sera removido por los administradores y la cuenta sera eliminada*</p>
 </div>
