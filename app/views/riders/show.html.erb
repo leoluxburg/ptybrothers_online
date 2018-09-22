@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-xs-12 text-center">
      <h3><%=@rider.first_name %> <%=@rider.last_name %></h3>
-     <%= cl_image_tag @rider.photo, height: 300, crop: :fill, class: "avatar-large" %>
+     <%= cl_image_tag @rider.photo, height: 150 , crop: :fill, class: "" %>
      <h4><strong>AKA: </strong><%=@rider.user_name%></h4>
      <h4><strong>Age: </strong><%=@rider.age%></h4>
      <h4><strong>Origin: </strong><%=@rider.country%></h4>
