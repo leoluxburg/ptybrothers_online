@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.6.6'
 
 gem 'rails', '5.0.2'
 gem 'puma'
 gem 'pg'
 gem 'figaro'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
 #gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
