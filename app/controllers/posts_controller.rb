@@ -4,7 +4,6 @@ class PostsController < ApplicationController
    # respond_to :js, :json, :html
   def index
     @posts = policy_scope(Post)
-
   end
 
   def show
